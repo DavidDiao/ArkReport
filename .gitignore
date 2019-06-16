@@ -1,0 +1,8 @@
+# Compiled File
+*.class
+
+# Package File
+*.jar
+
+# BurpSuite API
+api/

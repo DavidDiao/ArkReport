@@ -57,7 +57,12 @@ public class BurpExtender implements IBurpExtender, IHttpListener {
 				JsonObject obj = Json.parse(content).asObject();
 				if (obj.get("usePracticeTicket").asInt() == 0) { // Isn't practice
 					sid = obj.get("stageId").asString();
-					stageId.put(uid, sid);
+					if (!sid.startsWith("wk_melee") && !sid.startsWith("wk_toxic") // Skip CE series and AP series // I don't know why Penguin Stat seemed didn't collect LS series
+					 && !sid.endsWith("#f#")) { // Skip hard mode
+						stageId.put(uid, sid);
+					} else {
+						out.println(sid + " will be skipped.");
+					}
 				}
 			} else if (!isStart && !messageIsRequest && (sid = stageId.get(uid)) != null) {
 				byte[] response = messageInfo.getResponse();

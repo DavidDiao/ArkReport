@@ -85,6 +85,7 @@ public class BurpExtender implements IBurpExtender, IHttpListener {
 					furniCount += item.get("count").asInt();
 				}
 				post.add("furnitureNum", furniCount).add("drops", drops);
+				post.add("source", "ArkReport").add("version", "v0.0-alpha");
 				String postData = post.toString();
 				out.println(postData);
 				try {
